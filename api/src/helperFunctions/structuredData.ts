@@ -6,7 +6,6 @@ import type { DBData, UniqueEventNames, TeamsAtTheRaceEvent, TeamsByRaceEvent} f
  as a `location` string to get race teams at the event 
 */
 
-
 export const getRaceEvent = (data: DBData): Set<string> => {
     const uniqueRaceEventNames = new Set<string>();
 
@@ -21,8 +20,8 @@ export const getRaceEvent = (data: DBData): Set<string> => {
  - {actualRaceEventNameAsKey:{available-data-from-teams:{}}}
 */
 
-export const getTeamsWithThisRaceEventUpdates = ((data: DBData, location: string): TeamsAtTheRaceEvent | undefined => {
-    const dataByLocation: TeamsAtTheRaceEvent = {}
+export const getTeamsWithThisRaceEventUpdates = (data: DBData, location: string): TeamsAtTheRaceEvent | undefined => {
+    let dataByLocation: TeamsAtTheRaceEvent = {}
 
     data.forEach((item) => {
         const raceName = item.RaceName;
@@ -39,7 +38,7 @@ export const getTeamsWithThisRaceEventUpdates = ((data: DBData, location: string
                 events: [],
             };
         }
-        dataByLocation[raceName][constructor].events.push({item});
+        dataByLocation[raceName][constructor].events.push(item);
     });
     return dataByLocation[location];
-})
+}

@@ -16,10 +16,6 @@ const SelectRaceEvent = ({grandPrixList, data}:{grandPrixList: string[], data: D
 
     const teamsWhoBroughtUpgrades = getTeamsWithThisRaceEventUpdates(data, raceLocation);
 
-    // const teamUpgradesInfo: TeamsAtTheRaceEvent = teamsWhoBroughtUpgrades.map(grandPrix =>
-    //     grandPrix !== undefined ? Object.keys(grandPrix): []
-    // );
-
     const teamUpgradeInfo = teamsWhoBroughtUpgrades ? Object.keys(teamsWhoBroughtUpgrades) : [];
 
     return (

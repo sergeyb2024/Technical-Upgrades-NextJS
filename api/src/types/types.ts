@@ -15,8 +15,8 @@ export type TeamsByRaceEvent = {
 }[];
 
 export type TeamsAtTheRaceEvent = {
-    [key: string]:{
-        [key:string]:{
+    [raceName: string]:{
+        [constructor: string]:{
             constructor: string;
             eventDisplayName: string;
             events: DBData[];
