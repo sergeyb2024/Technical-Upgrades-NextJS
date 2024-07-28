@@ -1,4 +1,4 @@
-import type { DBData, UniqueEventNames, TeamsAtTheRaceEvent, TeamsByRaceEvent} from "@/types/types";
+import type { DBData, TeamsAtTheRaceEvent } from "@/types/types";
 /*
  - getRaceEvent will show unique RaceEvent values 
  in a form of string[] (["a", "b", "c"])

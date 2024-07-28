@@ -19,15 +19,19 @@ const SelectRaceEvent = ({grandPrixList, data}:{grandPrixList: string[], data: D
     const teamUpgradeInfo = teamsWhoBroughtUpgrades ? Object.keys(teamsWhoBroughtUpgrades) : [];
 
     return (
-        <div className="SelectRaceEvent">
-            <select onChange={handleRaceSelection}>
-                {grandPrixList.map(grandPrix => (
-                    <option key={grandPrix} value={grandPrix}>
-                        {grandPrix}
-                    </option>
-                ))}
-            </select>
-            <SelectConstructorWhoMadeUpdates teamUpgradeInfo={teamUpgradeInfo} />
+        <div>
+            <div className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue focus:border-blue sm:text-sm">
+                <select onChange={handleRaceSelection}>
+                    {grandPrixList.map(grandPrix => (
+                        <option key={grandPrix} value={grandPrix}>
+                            {grandPrix}
+                        </option>
+                    ))}
+                </select>
+            </div>
+                <div>
+                    <SelectConstructorWhoMadeUpdates teamUpgradeInfo={teamUpgradeInfo} />
+                </div>
         </div>
     );
 }

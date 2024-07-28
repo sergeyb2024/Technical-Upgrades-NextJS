@@ -14,7 +14,7 @@ const SelectConstructorWhoMadeUpdates = ({ teamUpgradeInfo }: {teamUpgradeInfo: 
     }, [teamUpgradeInfo]);
 
     return (
-        <div>
+        <div className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue focus:border-blue sm:text-sm">
             <select>
                 {raceTeam.map((item, index) => (
                     <option key={index}>{item}</option>
