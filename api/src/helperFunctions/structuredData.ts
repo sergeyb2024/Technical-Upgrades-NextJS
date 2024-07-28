@@ -1,5 +1,4 @@
-import type { UniqueEventNames, TeamsByRaceEvent, TeamsAtTheRaceEvent } from "../types/types"
-
+import type { DBData, UniqueEventNames, TeamsAtTheRaceEvent, TeamsByRaceEvent} from "@/types/types";
 /*
  - getRaceEvent will show unique RaceEvent values 
  in a form of string[] (["a", "b", "c"])
@@ -8,25 +7,21 @@ import type { UniqueEventNames, TeamsByRaceEvent, TeamsAtTheRaceEvent } from "..
 */
 
 
-export const getRaceEvent = (data:UniqueEventNames):string[] => {
+export const getRaceEvent = (data: DBData): Set<string> => {
     const uniqueRaceEventNames = new Set<string>();
-    if(Array.isArray(data)){
-        data.forEach(item => {
-            uniqueRaceEventNames.add(item.RaceName)
-        })
-    }else{
-        console.log('type mismatch')
-    }
-    return Array.from(uniqueRaceEventNames);
-}
 
+    data.map(item => {
+        uniqueRaceEventNames.add(item.RaceName)
+    })
+    return uniqueRaceEventNames
+};
 
 /*
  - getTeamsWithThisRaceEventUpdates will display teams that made upgrades after user selects the race event.
  - {actualRaceEventNameAsKey:{available-data-from-teams:{}}}
 */
 
-export const getTeamsWithThisRaceEventUpdates = ((data: TeamsByRaceEvent, location: string):TeamsAtTheRaceEvent | undefined => {
+export const getTeamsWithThisRaceEventUpdates = ((data: DBData, location: string): TeamsAtTheRaceEvent | undefined => {
     const dataByLocation: TeamsAtTheRaceEvent = {}
 
     data.forEach((item) => {
@@ -44,9 +39,7 @@ export const getTeamsWithThisRaceEventUpdates = ((data: TeamsByRaceEvent, locati
                 events: [],
             };
         }
-        dataByLocation[raceName][constructor].events.push({
-            ...item,
-        });
+        dataByLocation[raceName][constructor].events.push({item});
     });
     return dataByLocation[location];
 })

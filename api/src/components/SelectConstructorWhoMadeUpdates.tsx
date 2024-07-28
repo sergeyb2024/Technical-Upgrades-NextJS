@@ -1,16 +1,17 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 
-const SelectConstructorWhoMadeUpdates = ({ teamUpgradesInfo }) => {
-    const [raceTeam, setRaceTeam] = useState([]);
+const SelectConstructorWhoMadeUpdates = ({ teamUpgradeInfo }: {teamUpgradeInfo: string[]}) => {
+    const [raceTeam, setRaceTeam] = useState<string[]>([]);
 
     useEffect(() => {
-        if (teamUpgradesInfo.length > 0) {
-            setRaceTeam(teamUpgradesInfo[0]);
+        if (teamUpgradeInfo.length > 0) {
+            setRaceTeam(teamUpgradeInfo);
         }
-    }, [teamUpgradesInfo]);
+    }, [teamUpgradeInfo]);
 
     return (
         <div>
@@ -22,5 +23,7 @@ const SelectConstructorWhoMadeUpdates = ({ teamUpgradesInfo }) => {
         </div>
     );
 }
+
+SelectConstructorWhoMadeUpdates.propTypes = {};
 
 export default SelectConstructorWhoMadeUpdates;

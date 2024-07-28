@@ -1,23 +1,26 @@
-"use client"
+'use client'
 
+import type { DBData } from "@/types/types";
 import { useState } from "react";
 import SelectConstructorWhoMadeUpdates from './SelectConstructorWhoMadeUpdates';
 import { getTeamsWithThisRaceEventUpdates } from "../helperFunctions/structuredData";
+import PropTypes from 'prop-types';
 
 
+const SelectRaceEvent = ({grandPrixList, data}:{grandPrixList: string[], data: DBData}) => {
+    const [raceLocation, setRaceLocation] = useState<string>(grandPrixList[0]);
 
-const SelectRaceEvent = ({grandPrixList, dbData}) => {
-    const [raceLocation, setRaceLocation] = useState<string[]>(grandPrixList[0]);
-
-    function handleRaceSelection(e) {
+    function handleRaceSelection(e: React.ChangeEvent<HTMLInputElement>) {
         setRaceLocation(e.target.value);
     }
 
-    const teamsWhoBroughtUpgrades = getTeamsWithThisRaceEventUpdates(dbData, raceLocation);
+    const teamsWhoBroughtUpgrades = getTeamsWithThisRaceEventUpdates(data, raceLocation);
 
-    const teamUpgradesInfo = teamsWhoBroughtUpgrades.map(grandPrix =>
-        grandPrix !== undefined ? Object.keys(grandPrix): []
-    );
+    // const teamUpgradesInfo: TeamsAtTheRaceEvent = teamsWhoBroughtUpgrades.map(grandPrix =>
+    //     grandPrix !== undefined ? Object.keys(grandPrix): []
+    // );
+
+    const teamUpgradeInfo = teamsWhoBroughtUpgrades ? Object.keys(teamsWhoBroughtUpgrades) : [];
 
     return (
         <div className="SelectRaceEvent">
@@ -28,9 +31,14 @@ const SelectRaceEvent = ({grandPrixList, dbData}) => {
                     </option>
                 ))}
             </select>
-            <SelectConstructorWhoMadeUpdates teamUpgradesInfo={teamUpgradesInfo} />
+            <SelectConstructorWhoMadeUpdates teamUpgradeInfo={teamUpgradeInfo} />
         </div>
     );
+}
+
+SelectRaceEvent.propTypes = {
+    grandPrixList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    data: PropTypes.array.isRequired,
 }
 
 export default SelectRaceEvent;
