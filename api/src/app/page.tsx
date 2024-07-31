@@ -1,17 +1,19 @@
 "use-client"
 import SelectRaceEvent from '@/components/SelectRaceEvent';
-import { getRaceEvent } from '../helperFunctions/structuredData';
-import data from '../mock-data'
+import Header from '@/layout/Header';
+import Footer from '@/layout/Footer';
+import Main from '@/layout/Main';
 
 
 const Home = () => {
-  const grandPrixList: Set<string> = getRaceEvent(data);
   return (
     <main>
-        <SelectRaceEvent grandPrixList={Array.from(grandPrixList)} data={data} />
+        <Header/>
+          <Main/>
+        <Footer/>
     </main>    
   );
-}  
+}
 
 Home.propTypes = {};
 export default Home;

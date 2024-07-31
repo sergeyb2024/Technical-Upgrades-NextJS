@@ -1,4 +1,4 @@
-import type { DBData, UniqueEventNames, TeamsAtTheRaceEvent, TeamsByRaceEvent} from "@/types/types";
+import type { DBData, TeamsAtTheRaceEvent } from "@/types/types";
 /*
  - getRaceEvent will show unique RaceEvent values 
  in a form of string[] (["a", "b", "c"])
@@ -22,6 +22,7 @@ export const getRaceEvent = (data: DBData): Set<string> => {
 
 export const getTeamsWithThisRaceEventUpdates = (data: DBData, location: string): TeamsAtTheRaceEvent | undefined => {
     let dataByLocation: TeamsAtTheRaceEvent = {}
+  
 
     data.forEach((item) => {
         const raceName = item.RaceName;
