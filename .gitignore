@@ -12,7 +12,7 @@ README.md
 /coverage
 
 # next.js
-/.next/
+api/.next/
 /out/
 
 # production
