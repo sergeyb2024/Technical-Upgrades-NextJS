@@ -22,6 +22,7 @@ export const getRaceEvent = (data: DBData): Set<string> => {
 
 export const getTeamsWithThisRaceEventUpdates = (data: DBData, location: string): TeamsAtTheRaceEvent | undefined => {
     let dataByLocation: TeamsAtTheRaceEvent = {}
+  
 
     data.forEach((item) => {
         const raceName = item.RaceName;
