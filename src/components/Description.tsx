@@ -14,11 +14,12 @@ function Description({descriptives, raceTeamSelected}:{descriptives: TeamsAtTheR
     );
   
   return (
-    <div>
+    
+    <div className="divide-y-4">
             {displayItems.map((item, index) => (
                 <div key={index}>
                     <p>Updated Component: {item.UpdatedComponent}</p>
-                    <p>Description {item.Description}</p>
+                    <p>Description: {item.Description}</p>
                 </div>
             ))}
     </div>
